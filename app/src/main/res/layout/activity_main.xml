@@ -7,13 +7,14 @@
     tools:context="com.bamboo.pengyu.wanandroid.MainActivity">
 
     <LinearLayout
+        android:id="@+id/ll_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorRed"
         android:layout_alignParentTop="true">
 
         <ImageView
-            android:id="@+id/iv_pop_menu"
+            android:id="@+id/iv_top_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/icon_drawer"/>
@@ -33,23 +34,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/icon_search"
-            android:layout_marginLeft="110dp" />
+            android:layout_marginLeft="150dp" />
     </LinearLayout>
     
     <FrameLayout
         android:id="@+id/frame_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignTop="@+id/tabhost"/>
+        android:layout_below="@+id/ll_title"/>
 
     <android.support.v4.app.FragmentTabHost
-        android:id="@+id/tabhost"
+        android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
-        
+
         <FrameLayout
-            android:id="@+id/tab_content"
+            android:id="@android:id/tabcontent"
             android:layout_width="0dp"
             android:layout_height="0dp"/>
     </android.support.v4.app.FragmentTabHost>

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabWidget;
@@ -16,17 +17,19 @@ import android.widget.TextView;
 public class MainActivity extends FragmentActivity implements TabHost.OnTabChangeListener {
 
     private FragmentTabHost tabHost;
+    private TextView topTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tabHost = findViewById(R.id.tabhost);
+        topTitle = findViewById(R.id.tv_top_title);
+        tabHost = findViewById(android.R.id.tabhost);
         tabHost.setup(this, getSupportFragmentManager(), R.id.frame_content);
-        tabHost.getTabWidget().setDividerDrawable(null);
         tabHost.setOnTabChangedListener(this);
         initTab();
+
     }
 
     private void initTab() {
@@ -34,7 +37,6 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
         for(int i=0; i< tabs.length; i++) {
             TabHost.TabSpec tabSpec = tabHost.newTabSpec(tabs[i]).setIndicator(getTabView(i));
             tabHost.addTab(tabSpec,TabDB.getFragments()[i],null);
-            tabHost.setTag(i);
         }
     }
 
@@ -52,6 +54,7 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
 
     @Override
     public void onTabChanged(String tabId) {
+        topTitle.setText(TabDB.getTabsTxt()[tabHost.getCurrentTab()]);
         TabWidget tabWidget = tabHost.getTabWidget();
         for(int i=0; i<tabWidget.getChildCount(); i++) {
             View view = tabWidget.getChildTabViewAt(i);

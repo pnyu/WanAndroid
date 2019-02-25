@@ -17,7 +17,7 @@ public class KnowledgeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         TextView textView = new TextView(getContext());
-        textView.setText("知识体系");
+        textView.setText("");
         return textView;
     }
 }
