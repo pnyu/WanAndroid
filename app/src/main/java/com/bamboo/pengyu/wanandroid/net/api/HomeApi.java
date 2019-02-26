@@ -5,6 +5,8 @@ import com.bamboo.pengyu.wanandroid.net.entity.Articles;
 import com.bamboo.pengyu.wanandroid.net.entity.Banner;
 import com.bamboo.pengyu.wanandroid.net.entity.BaseResponse;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -15,7 +17,7 @@ import retrofit2.http.Path;
 
 public interface HomeApi {
     @GET("banner/json")
-    Call<Banner> getBanner();
+    Call<BaseResponse<List<Banner>>> getBanner();
 
     @GET("article/list/{pageNum}/json")
     Call<BaseResponse<Articles>> getArticle(@Path("pageNum") int pageNum);
